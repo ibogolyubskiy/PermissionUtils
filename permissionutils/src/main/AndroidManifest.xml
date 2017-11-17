@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="android.permissionutils">
+
+    <application
+        android:allowBackup="true">
+
+        <activity
+            android:name=".PermissionsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Transparent" />
+
+    </application>
+
+</manifest>
