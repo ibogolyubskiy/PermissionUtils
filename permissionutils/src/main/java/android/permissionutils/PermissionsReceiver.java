@@ -49,7 +49,7 @@ final class PermissionsReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         PermissionsResult result = intent.getParcelableExtra(PERMISSIONS_RESULT);
-        mCallback.onPermissionResult(result);
+        mCallback.onPermissionsResult(result);
         LocalBroadcastManager.getInstance(mContext).unregisterReceiver(this);
     }
 }

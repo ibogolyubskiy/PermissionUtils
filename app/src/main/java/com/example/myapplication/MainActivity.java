@@ -55,11 +55,14 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
     }
 
     private void buildPermissionsRequest() {
-        new PermissionsRequest(this).withPermissions(READ_CONTACTS, WRITE_EXTERNAL_STORAGE).withCallback(this).build();
+        new PermissionsRequest(this)
+                .withPermissions(ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, WRITE_EXTERNAL_STORAGE, READ_CONTACTS)
+                .withCallback(this)
+                .build();
     }
 
     @Override
-    public void onPermissionResult(PermissionsResult result) {
+    public void onPermissionsResult(PermissionsResult result) {
         Log.d("activity permissions", "denied permissions: " + result.denied.size() + " blocked permissions: " + result.blocked.size());
         if (!result.denied.isEmpty())
             new AlertDialog.Builder(this)
