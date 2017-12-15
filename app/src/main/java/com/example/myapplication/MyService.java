@@ -42,6 +42,7 @@ public class MyService extends Service {
                         " denied permissions: " + result.denied.size() +
                         " blocked permissions: " + result.blocked.size());
                 Toast.makeText(MyService.this, getString(R.string.result, result.granted.size(), result.denied.size(), result.blocked.size()), Toast.LENGTH_SHORT).show();
+                stopSelf();
             }
         }).build();
 
