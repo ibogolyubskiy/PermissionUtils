@@ -31,7 +31,9 @@ public class PermissionsActivity extends AppCompatActivity implements DialogInte
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        Bundle bundle = savedState == null ? getIntent().getExtras() : savedState;
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) extras = new Bundle();
+        Bundle bundle = savedState == null ? extras : savedState;
         mAppSettings = bundle.getBoolean(APP_SETTINGS, false);
         mPermissions = bundle.getParcelableArrayList(PERMISSIONS);
         if (mAppSettings) {
@@ -76,7 +78,7 @@ public class PermissionsActivity extends AppCompatActivity implements DialogInte
                     }
                 }
                 if (results[i] != PERMISSION_GRANTED) {
-                    if (!PermissionsRequest.hasRationale(this, permission)) {
+                    if (!PermissionUtils.hasRationale(this, permission)) {
                         if (current != null && current.hasRationale())
                             rationales.add(current.getRationale());
                         mResult.blocked.add(current);
@@ -137,7 +139,7 @@ public class PermissionsActivity extends AppCompatActivity implements DialogInte
 
     private void showAppSettings() {
         mAppSettings = true;
-        PermissionsRequest.showAppSettings(this);
+        PermissionUtils.showAppSettings(this);
     }
 
     @Override
@@ -147,8 +149,8 @@ public class PermissionsActivity extends AppCompatActivity implements DialogInte
             mResult = new PermissionsResult();
             for (PermissionWrapper wrapper : mPermissions) {
                 String permission = wrapper.getPermission();
-                if (!PermissionsRequest.hasPermission(this, permission)) {
-                    if (!PermissionsRequest.hasRationale(this, permission))
+                if (!PermissionUtils.hasPermission(this, permission)) {
+                    if (!PermissionUtils.hasRationale(this, permission))
                         mResult.blocked.add(wrapper);
 
                     mResult.denied.add(wrapper);

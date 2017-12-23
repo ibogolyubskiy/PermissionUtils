@@ -12,6 +12,7 @@ public class PermissionWrapper implements Parcelable {
         mRationale = in.readString();
     }
 
+    @SuppressWarnings("WeakerAccess")
     public static final Creator<PermissionWrapper> CREATOR = new Creator<PermissionWrapper>() {
         @Override
         public PermissionWrapper createFromParcel(Parcel in) {
@@ -34,6 +35,7 @@ public class PermissionWrapper implements Parcelable {
         return TextUtils.equals(mPermission, that.mPermission);
     }
 
+    @SuppressWarnings("WeakerAccess")
     public boolean is(String permission) {
         return TextUtils.equals(mPermission, permission);
     }
@@ -49,10 +51,12 @@ public class PermissionWrapper implements Parcelable {
         return mPermission;
     }
 
+    @SuppressWarnings("WeakerAccess")
     public String getRationale() {
         return mRationale;
     }
 
+    @SuppressWarnings("WeakerAccess")
     public boolean hasRationale() {
         return !TextUtils.isEmpty(mRationale);
     }
@@ -60,6 +64,7 @@ public class PermissionWrapper implements Parcelable {
     private String mPermission;
     private String mRationale;
 
+    @SuppressWarnings("WeakerAccess")
     public PermissionWrapper(@NonNull String permission) {
         mPermission = permission;
     }

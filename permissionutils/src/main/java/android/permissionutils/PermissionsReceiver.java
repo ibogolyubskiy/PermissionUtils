@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.permissionutils.interfaces.ResultListener;
 import android.support.v4.content.LocalBroadcastManager;
 
 import java.util.ArrayList;
@@ -19,14 +20,14 @@ final class PermissionsReceiver extends BroadcastReceiver {
 
     private final Context mContext;
 
-    private PermissionsListener mCallback;
+    private ResultListener mCallback;
     private ArrayList<PermissionWrapper> mPermissions;
 
     PermissionsReceiver(Context context) {
         mContext = context;
     }
 
-    void setCallback(PermissionsListener callback) {
+    void setCallback(ResultListener callback) {
         mCallback = callback;
     }
 

@@ -8,10 +8,11 @@ import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.os.Bundle;
+import android.permissionutils.PermissionUtils;
 import android.permissionutils.PermissionWrapper;
+import android.permissionutils.interfaces.ResultListener;
 import android.permissionutils.PermissionsRequest;
 import android.permissionutils.PermissionsResult;
-import android.permissionutils.PermissionsListener;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -31,8 +32,9 @@ import static android.Manifest.permission.READ_CONTACTS;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.GET_META_DATA;
 
-public class MainActivity extends AppCompatActivity implements PermissionsListener, OnClickListener {
+public class MainActivity extends AppCompatActivity implements ResultListener, OnClickListener {
 
+    @SuppressWarnings("unused")
     public static final String[] ALL_PERMISSIONS = new String[] {
             ACCESS_COARSE_LOCATION,
             ACCESS_FINE_LOCATION,
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
         PackageManager pm = getPackageManager();
         Set<CharSequence> groups = new HashSet<>();
         for (PermissionWrapper wrapper : permissions) {
-            if (PermissionsRequest.hasPermission(this, wrapper.getPermission())) continue;
+            if (PermissionUtils.hasPermission(this, wrapper.getPermission())) continue;
             try {
                 PermissionInfo info = pm.getPermissionInfo(wrapper.getPermission(), GET_META_DATA);
                 PermissionGroupInfo group = pm.getPermissionGroupInfo(info.group, GET_META_DATA);
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements PermissionsListen
                 buildPermissionsRequest();
                 break;
             case DialogInterface.BUTTON_NEUTRAL:
-                PermissionsRequest.showAppSettings(this);
+                PermissionUtils.showAppSettings(this);
                 break;
             case DialogInterface.BUTTON_NEGATIVE:
                 break;

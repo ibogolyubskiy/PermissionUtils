@@ -4,7 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.permissionutils.PermissionWrapper;
-import android.permissionutils.PermissionsListener;
+import android.permissionutils.interfaces.ResultListener;
 import android.permissionutils.PermissionsRequest;
 import android.permissionutils.PermissionsResult;
 import android.util.Log;
@@ -33,7 +33,7 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        new PermissionsRequest(this).withPermissions(ALL_PERMISSIONS).withCallback(new PermissionsListener() {
+        new PermissionsRequest(this).withPermissions(ALL_PERMISSIONS).withCallback(new ResultListener() {
 
             @Override
             public void onPermissionsResult(PermissionsResult result) {
