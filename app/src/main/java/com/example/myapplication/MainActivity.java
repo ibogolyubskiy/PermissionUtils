@@ -1,25 +1,36 @@
 package com.example.myapplication;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PermissionGroupInfo;
+import android.content.pm.PermissionInfo;
 import android.os.Bundle;
 import android.permissionutils.PermissionUtils;
 import android.permissionutils.PermissionWrapper;
 import android.permissionutils.PermissionsRequest;
 import android.permissionutils.PermissionsResult;
 import android.permissionutils.interfaces.ResultListener;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.READ_CONTACTS;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.content.pm.PackageManager.GET_META_DATA;
 
 public class MainActivity extends AppCompatActivity implements ResultListener, OnClickListener {
 
@@ -57,9 +68,41 @@ public class MainActivity extends AppCompatActivity implements ResultListener, O
         List<PermissionWrapper> denied = result.denied;
         Log.d("activity permissions", "denied permissions: " + denied.size() + " blocked permissions: " + result.blocked.size());
         if (!denied.isEmpty())
-            DialogWrapper.getInstance(result).show(getSupportFragmentManager(), DialogWrapper.class.getName());
+            new AlertDialog.Builder(this)
+                    .setView(buildRationaleBody(result.denied))
+                    .setPositiveButton(android.R.string.ok, this)
+                    .setNegativeButton(android.R.string.cancel, this)
+                    .setNeutralButton(R.string.settings, this)
+                    .show();
         else
             Toast.makeText(this, R.string.all_permissions_granted, Toast.LENGTH_SHORT).show();
+    }
+
+    private View buildRationaleBody(List<PermissionWrapper> permissions) {
+        LinearLayout body = (LinearLayout) View.inflate(this, R.layout.view_dialog_body, null);
+        ViewGroup list = body.findViewById(R.id.permissions);
+        Set<CharSequence> groups = getPermissionGroups(permissions);
+        for(CharSequence info : groups) {
+            TextView group = new TextView(this);
+            group.setText(info);
+            list.addView(group);
+        }
+        return body;
+    }
+
+    @NonNull
+    private Set<CharSequence> getPermissionGroups(List<PermissionWrapper> permissions) {
+        PackageManager pm = getPackageManager();
+        Set<CharSequence> groups = new HashSet<>();
+        for (PermissionWrapper wrapper : permissions) {
+            if (PermissionUtils.hasPermission(this, wrapper.getPermission())) continue;
+            try {
+                PermissionInfo info = pm.getPermissionInfo(wrapper.getPermission(), GET_META_DATA);
+                PermissionGroupInfo group = pm.getPermissionGroupInfo(info.group, GET_META_DATA);
+                groups.add(group.loadLabel(pm));
+            } catch (Exception ignored) { }
+        }
+        return groups;
     }
 
     @Override
