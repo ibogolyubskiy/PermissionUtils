@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">PermissionUtils</string>
     <string name="settings">Settings</string>
     <string name="title">You need to enable these permissions for correct application work.</string>
     <string name="afterword">Try again? Also you can enable it manually in application settings.</string>
