@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.permissionutils.app;
 
 import org.junit.Test;
 

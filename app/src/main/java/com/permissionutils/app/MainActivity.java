@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.permissionutils.app;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
