@@ -35,8 +35,14 @@ captures/
 # Intellij
 *.iml
 .idea/workspace.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/runCOnfigurations.xml
+.idea/vcs.xml
 .idea/tasks.xml
 .idea/gradle.xml
+.idea/codeStyles/Project.xml
+.idea/caches/build_file_checksums.ser
 .idea/dictionaries
 .idea/libraries
 
@@ -53,5 +59,3 @@ google-services.json
 freeline.py
 freeline/
 freeline_project_description.json
-/.idea/codeStyles/Project.xml
-/.idea/caches/build_file_checksums.ser
