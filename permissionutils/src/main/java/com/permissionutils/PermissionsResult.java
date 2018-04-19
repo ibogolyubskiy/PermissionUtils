@@ -1,4 +1,4 @@
-package android.permissionutils;
+package com.permissionutils;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package android.permissionutils;
+package com.permissionutils;
 
 import org.junit.Test;
 

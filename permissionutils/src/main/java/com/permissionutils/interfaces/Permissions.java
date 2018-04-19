@@ -1,6 +1,6 @@
-package android.permissionutils.interfaces;
+package com.permissionutils.interfaces;
 
-import android.permissionutils.PermissionWrapper;
+import com.permissionutils.PermissionWrapper;
 
 import java.util.ArrayList;
 

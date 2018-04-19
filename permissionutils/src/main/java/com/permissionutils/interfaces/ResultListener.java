@@ -1,6 +1,6 @@
-package android.permissionutils.interfaces;
+package com.permissionutils.interfaces;
 
-import android.permissionutils.PermissionsResult;
+import com.permissionutils.PermissionsResult;
 
 public interface ResultListener {
     void onPermissionsResult(PermissionsResult result);

@@ -1,10 +1,10 @@
-package android.permissionutils;
+package com.permissionutils;
 
 import android.content.Context;
-import android.permissionutils.interfaces.Callback;
-import android.permissionutils.interfaces.Permissions;
-import android.permissionutils.interfaces.ResultListener;
-import android.permissionutils.interfaces.Request;
+import com.permissionutils.interfaces.Callback;
+import com.permissionutils.interfaces.Permissions;
+import com.permissionutils.interfaces.ResultListener;
+import com.permissionutils.interfaces.Request;
 
 import java.util.ArrayList;
 

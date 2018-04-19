@@ -3,10 +3,10 @@ package com.permissionutils.app;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.permissionutils.PermissionWrapper;
-import android.permissionutils.interfaces.ResultListener;
-import android.permissionutils.PermissionsRequest;
-import android.permissionutils.PermissionsResult;
+import com.permissionutils.PermissionWrapper;
+import com.permissionutils.interfaces.ResultListener;
+import com.permissionutils.PermissionsRequest;
+import com.permissionutils.PermissionsResult;
 import android.util.Log;
 import android.widget.Toast;
 

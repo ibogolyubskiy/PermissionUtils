@@ -1,4 +1,4 @@
-package android.permissionutils;
+package com.permissionutils;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,12 +15,12 @@ import java.util.List;
 import static android.R.string.cancel;
 import static android.R.string.ok;
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static android.permissionutils.Constants.APP_SETTINGS;
-import static android.permissionutils.Constants.PERMISSIONS;
-import static android.permissionutils.Constants.PERMISSIONS_FILTER;
-import static android.permissionutils.Constants.PERMISSIONS_REQUEST;
-import static android.permissionutils.Constants.PERMISSIONS_RESULT;
-import static android.permissionutils.Constants.SETTINGS_REQUEST;
+import static com.permissionutils.Constants.APP_SETTINGS;
+import static com.permissionutils.Constants.PERMISSIONS;
+import static com.permissionutils.Constants.PERMISSIONS_FILTER;
+import static com.permissionutils.Constants.PERMISSIONS_REQUEST;
+import static com.permissionutils.Constants.PERMISSIONS_RESULT;
+import static com.permissionutils.Constants.SETTINGS_REQUEST;
 
 public class PermissionsActivity extends AppCompatActivity implements DialogInterface.OnClickListener {
 

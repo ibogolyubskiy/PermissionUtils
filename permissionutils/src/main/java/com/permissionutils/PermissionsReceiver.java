@@ -1,22 +1,18 @@
-package android.permissionutils;
+package com.permissionutils;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.permissionutils.interfaces.ResultListener;
+import com.permissionutils.interfaces.ResultListener;
 import android.support.v4.content.LocalBroadcastManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static android.permissionutils.Constants.PERMISSIONS;
-import static android.permissionutils.Constants.PERMISSIONS_FILTER;
-import static android.permissionutils.Constants.PERMISSIONS_RESULT;
-
 final class PermissionsReceiver extends BroadcastReceiver {
 
-    private static final IntentFilter FILTER = new IntentFilter(PERMISSIONS_FILTER);
+    private static final IntentFilter FILTER = new IntentFilter(Constants.PERMISSIONS_FILTER);
 
     private final Context mContext;
 
@@ -42,14 +38,14 @@ final class PermissionsReceiver extends BroadcastReceiver {
     void requestPermissions() {
         LocalBroadcastManager.getInstance(mContext).registerReceiver(this, FILTER);
         Intent intent = new Intent(mContext, PermissionsActivity.class);
-        intent.putParcelableArrayListExtra(PERMISSIONS, mPermissions);
+        intent.putParcelableArrayListExtra(Constants.PERMISSIONS, mPermissions);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        PermissionsResult result = intent.getParcelableExtra(PERMISSIONS_RESULT);
+        PermissionsResult result = intent.getParcelableExtra(Constants.PERMISSIONS_RESULT);
         mCallback.onPermissionsResult(result);
         LocalBroadcastManager.getInstance(mContext).unregisterReceiver(this);
     }

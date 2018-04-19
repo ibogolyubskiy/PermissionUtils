@@ -1,4 +1,4 @@
-package android.permissionutils.interfaces;
+package com.permissionutils.interfaces;
 
 public interface Request {
     void build();
