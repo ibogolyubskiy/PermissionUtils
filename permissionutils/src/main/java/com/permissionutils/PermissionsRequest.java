@@ -60,7 +60,7 @@ public class PermissionsRequest {
         }
 
         @Override
-        public void build() {
+        public void show() {
             mPermissionsReceiver.requestPermissions();
         }
     }

@@ -44,7 +44,7 @@ public class MyService extends Service {
                 Toast.makeText(MyService.this, getString(R.string.result, result.granted.size(), result.denied.size(), result.blocked.size()), Toast.LENGTH_SHORT).show();
                 stopSelf();
             }
-        }).build();
+        }).show();
 
         return super.onStartCommand(intent, flags, startId);
     }

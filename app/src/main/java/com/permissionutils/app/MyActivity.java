@@ -61,7 +61,7 @@ public class MyActivity extends AppCompatActivity implements ResultListener, OnC
         new PermissionsRequest(this)
                 .withPermissions(ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION, WRITE_EXTERNAL_STORAGE, READ_CONTACTS)
                 .withCallback(this)
-                .build();
+                .show();
     }
 
     @Override
