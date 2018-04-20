@@ -8,11 +8,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PermissionGroupInfo;
 import android.content.pm.PermissionInfo;
 import android.os.Bundle;
-import com.permissionutils.PermissionUtils;
-import com.permissionutils.PermissionWrapper;
-import com.permissionutils.PermissionsRequest;
-import com.permissionutils.PermissionsResult;
-import com.permissionutils.interfaces.ResultListener;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,6 +16,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.permissionutils.PermissionUtils;
+import com.permissionutils.PermissionWrapper;
+import com.permissionutils.PermissionsRequest;
+import com.permissionutils.PermissionsResult;
+import com.permissionutils.interfaces.ResultListener;
 
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +33,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.pm.PackageManager.GET_META_DATA;
 
-public class MainActivity extends AppCompatActivity implements ResultListener, OnClickListener {
+public class MyActivity extends AppCompatActivity implements ResultListener, OnClickListener {
 
     @SuppressWarnings("unused")
     public static final String[] ALL_PERMISSIONS = new String[] {

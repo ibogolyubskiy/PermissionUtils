@@ -43,12 +43,12 @@ public class PermissionsActivity extends AppCompatActivity implements DialogInte
             if (mPermissions != null) {
                 buildPermissionsRequest();
             } else {
-                cancelRequest();
+                finishRequest();
             }
         }
     }
 
-    private void cancelRequest() {
+    private void finishRequest() {
         Intent intent = new Intent(PERMISSIONS_FILTER);
         intent.putExtra(PERMISSIONS_RESULT, mResult);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
@@ -99,7 +99,7 @@ public class PermissionsActivity extends AppCompatActivity implements DialogInte
                         .show();
             }
             else {
-                cancelRequest();
+                finishRequest();
             }
         }
     }
@@ -132,7 +132,7 @@ public class PermissionsActivity extends AppCompatActivity implements DialogInte
                 showAppSettings();
                 break;
             case DialogInterface.BUTTON_NEGATIVE:
-                cancelRequest();
+                finishRequest();
                 break;
         }
     }
@@ -159,7 +159,7 @@ public class PermissionsActivity extends AppCompatActivity implements DialogInte
                     mResult.granted.add(wrapper);
                 }
             }
-            cancelRequest();
+            finishRequest();
         }
     }
 }

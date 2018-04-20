@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/std_margin"
-    tools:context="com.permissionutils.app.MainActivity"
+    tools:context=".MyActivity"
     tools:ignore="ButtonStyle">
 
     <Button
